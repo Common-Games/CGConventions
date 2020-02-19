@@ -10,7 +10,7 @@ It'll also help greatly with
 # Table of Contents
 
 - [Directory/File Structure](#directoryfile-structure)
-    - [GameObject](#gameobject)
+    - [GameObject](#gameobjects)
     - [Assets](#assets)
     - [Scripts](#scripts)
     - [Models](#models)
@@ -26,7 +26,7 @@ It'll also help greatly with
 
 > *No* `spaces` on file or directory names.
 
-## GameObject
+## GameObjects
 
 1. For Descriptors, use `tree_small` *not* `small_tree`. While the latter sound better, it is much more effective to group all tree objects together instead of all small objects.
 
@@ -220,22 +220,23 @@ Specularity maps have the advantage of being having the possibility to be RGB ma
     <summary>2. RGB Masks</summary>
     It is good practice to use a single texture to combine black and white masks in a single texture split by each RGB channel. Using this, most textures should have:
     
-    ```
-    texture_A.png  # Albedo
-    texture_N.png   # Normal Map
-    texture_MA.png   # Mask
-    ```
+```
+texture_A.png  # Albedo
+texture_N.png   # Normal Map
+texture_MA.png   # Mask
+```
     
-    Channel | Spec/Gloss        | Rough/Metal
-    :-------|:------------------|:-----------
-    R       | Specularity       | Roughness
-    G       | Glossiness        | Metallic
-    B       | Ambient Occlusion | Ambient Occlusion
     
-    ##### The blue channel can vary depending on the type of material:
-    
-     - For materials with subsurface scattering shader (characters) use the `B` channel for *subsurface opacity/strength*
-     - For materials with anisotropic shader (brushed metal) use the `B` channel for the *anisotropic direction map*
+Channel | Spec/Gloss        | Rough/Metal
+:-------|:------------------|:-----------
+R       | Specularity       | Roughness
+G       | Glossiness        | Metallic
+B       | Ambient Occlusion | Ambient Occlusion
+
+##### The blue channel can vary depending on the type of material:
+
+ - For materials with subsurface scattering shader (characters) use the `B` channel for *subsurface opacity/strength*
+ - For materials with anisotropic shader (brushed metal) use the `B` channel for the *anisotropic direction map*
 
 </details>
  
