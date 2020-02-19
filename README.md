@@ -14,7 +14,7 @@ It'll also help greatly with
     - [Assets](#assets)
     - [Scripts](#scripts)
     - [Models](#models)
-- [Asset Workflow](#asset workflow)
+- [Asset Workflow](#asset-workflow)
     - [Models](#models-workflow)
     - [Textures](#textures-workflow)
     - [Configuration files](#settings-workflow)
@@ -199,7 +199,7 @@ Choose either a `Specularity/Glossiness` or `Roughness/Metallic` workflow.
 Specularity maps have the advantage of being having the possibility to be RGB maps instead of grayscale (useful for tinted metals), apart from that there is little difference between the result from either workflow.
 
 <details>
-  <summary>Texture Suffixes</summary>
+  <summary>1. Texture Suffixes</summary>
   
   Suffix | Texture
   :------|:-----------------
@@ -215,44 +215,29 @@ Specularity maps have the advantage of being having the possibility to be RGB ma
   `_AO`  | Ambient Occlusion
   `_MA`   | Mask
   </details>
+  
+<details>
+    <summary>2. RGB Masks</summary>
+    It is good practice to use a single texture to combine black and white masks in a single texture split by each RGB channel. Using this, most textures should have:
+    
+    ```
+    texture_A.png  # Albedo
+    texture_N.png   # Normal Map
+    texture_MA.png   # Mask
+    ```
+    
+    Channel | Spec/Gloss        | Rough/Metal
+    :-------|:------------------|:-----------
+    R       | Specularity       | Roughness
+    G       | Glossiness        | Metallic
+    B       | Ambient Occlusion | Ambient Occlusion
+    
+    ##### The blue channel can vary depending on the type of material:
+    
+     - For materials with subsurface scattering shader (characters) use the `B` channel for *subsurface opacity/strength*
+     - For materials with anisotropic shader (brushed metal) use the `B` channel for the *anisotropic direction map*
 
-#### 1. Texture Suffixes
-
-Suffix | Texture
-:------|:-----------------
-`_A`  | Albedo
-`_SP`  | Specular
-`_R`   | Roughness
-`_MT`  | Metallic
-`_GL`  | Glossiness
-`_N`   | Normal
-`_H`   | Height
-`_DP`  | Displacement
-`_EM`  | Emission
-`_AO`  | Ambient Occlusion
-`_MA`   | Mask
-
-#### 2. RGB Masks
-
-It is good practice to use a single texture to combine black and white masks in a single texture split by each RGB channel. Using this, most textures should have:
-
-```
-texture_AL.png  # Albedo
-texture_N.png   # Normal Map
-texture_M.png   # Mask
-```
-
-Channel | Spec/Gloss        | Rough/Metal
-:-------|:------------------|:-----------
-R       | Specularity       | Roughness
-G       | Glossiness        | Metallic
-B       | Ambient Occlusion | Ambient Occlusion
-
-##### The blue channel can vary depending on the type of material:
-
- - For materials with subsurface scattering shader (characters) use the `B` channel for *subsurface opacity/strength*
- - For materials with anisotropic shader (brushed metal) use the `B` channel for the *anisotropic direction map*
- 
+</details>
  
 ## Audio workflow
  
