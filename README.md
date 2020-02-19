@@ -1,4 +1,4 @@
-Common Games Style Guide
+Common Games Conventions Style Guide
 ===========================
 
 ### For file structure, naming conventions, and other things
